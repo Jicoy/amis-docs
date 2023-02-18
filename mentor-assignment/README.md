@@ -39,15 +39,11 @@ routes/
 └── api.php
 ```
 
-<a name="adminmacontroller"></a>
-## AdminMaController
+<!-- ## AdminMaController.php
 
-'Ma' stands for MentorAssignment inside this controller:
-
-
+'Ma' stands for MentorAssignment; inside this controller we have this `index` and `update` :
 
 ```php
-
 public function index(Request $request, TagProcessor $tagProcessor)
 {
     $request->merge(['access_permission' => 'tags']);
@@ -63,9 +59,13 @@ public function index(Request $request, TagProcessor $tagProcessor)
         'ma' => $ma
     ],200);
 }
+``` -->
 
-```
 
+## MentorAssignmentController
+
+## MentorRoleController
+This controller was associated of displaying `mentor_role` to this particular section  
 
 
 # Frontend folder structure
