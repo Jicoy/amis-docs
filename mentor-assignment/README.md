@@ -5,7 +5,7 @@ app/
 ├── Http/
 │   ├── Controllers/
 │   │   ├── Admin/
-│   │   │   ├── AdminMaController.php
+│   │   │   ├── [AdminMaController.php](#adminmacontroller)
 │   │   │   ├── AdminMaTxnController.php
 │   │   │   └── MentorAssignmentController.php
 │   │   ├── Faculty/
@@ -38,6 +38,11 @@ database/
 routes/
 └── api.php
 ```
+
+<a name="adminmacontroller"></a>
+## This admin ma controller
+
+
 
 # Frontend folder structure
 
