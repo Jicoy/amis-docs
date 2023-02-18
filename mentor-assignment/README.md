@@ -65,9 +65,46 @@ public function index(Request $request, TagProcessor $tagProcessor)
 ## MentorAssignmentController
 
 ## MentorRoleController
-This controller was associated of displaying `mentor_role` to this particular section  
+This controller was designated for displaying `mentor_role` in this particular section  
 
 ![alt text](https://github.com/Jicoy/amis-docs/blob/main/assets/mentor-assignment/Screenshot%202023-02-18%20223518.png)
+
+`backend code`
+
+```php
+public function index()
+{
+    $ma = MentorRole::get();
+    return response()->json(
+        [
+            'ma' => $ma,
+        ], 200
+    );
+}
+```
+This is how it fetch from `backend` to `frontend`
+
+`actions`
+```javascript
+async getMentorRole({commit}) {
+    commit('GET_DATA_REQUEST')
+    try {
+        const data = await this.$axios.$get(`/mentor-roles`,)
+        await commit('GET_MENTOR_ROLES', data.ma)
+    } catch (error) {
+        ...
+    }
+},
+```
+`mutations`
+```javascript
+GET_MENTOR_ROLES(state, data) {
+    let role = data.filter(x => x.id != 1)
+    state.mentorRoles = role
+}, 
+```
+Data was manipulated from mutations, we don't want to display `Temporary Adviser` which is equivalent from `1`, as show on `GET_MENTOR_ROLES`
+
 
 # Frontend folder structure
 
