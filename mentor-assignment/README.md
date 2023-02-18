@@ -64,13 +64,15 @@ public function index(Request $request, TagProcessor $tagProcessor)
 
 ## MentorAssignmentController
 
+
+## FacultiesController
+
+
 ## MentorRoleController
 This controller was designated for displaying `mentor_role` in this particular section  
-
 ![alt text](https://github.com/Jicoy/amis-docs/blob/main/assets/mentor-assignment/Screenshot%202023-02-18%20223518.png)
 
 `backend code`
-
 ```php
 public function index()
 {
@@ -82,28 +84,59 @@ public function index()
     );
 }
 ```
-This is how it fetch from `backend` to `frontend`
+This is how it fetch data from `backend`
 
-`actions`
 ```javascript
-async getMentorRole({commit}) {
-    commit('GET_DATA_REQUEST')
-    try {
-        const data = await this.$axios.$get(`/mentor-roles`,)
-        await commit('GET_MENTOR_ROLES', data.ma)
-    } catch (error) {
-        ...
+export const actions = {
+    async getMentorRole({commit}) {
+        commit('GET_DATA_REQUEST')
+        try {
+            const data = await this.$axios.$get(`/mentor-roles`)
+            await commit('GET_MENTOR_ROLES', data.ma)
+        } catch (error) {
+            ...
+        }
     }
-},
+}
 ```
-`mutations`
+> **Note**  
+> This `async getMentorRole` was already used by all roles and it is located at `store/mentorAssignment.js`
+
 ```javascript
-GET_MENTOR_ROLES(state, data) {
-    let role = data.filter(x => x.id != 1)
-    state.mentorRoles = role
-}, 
+export const mutations = {
+    GET_MENTOR_ROLES(state, data) {
+        let role = data.filter(x => x.id != 1)
+        state.mentorRoles = role
+    }
+}
 ```
-Data was manipulated from mutations, we don't want to display `Temporary Adviser` which is equivalent from `1`, as show on `GET_MENTOR_ROLES`
+The data we get from backend was manipulated from mutations, we don't want to display `Temporary Adviser` which is equivalent from `1`, as show on `GET_MENTOR_ROLES`. Then send it back to `states`
+```javascript
+export const state = () => ({
+    mentorRoles: {},
+})
+```
+After we fetch data and manipulate from store, we can use it to our components which `components/mentor-assignments/StudentAddMentor.vue`
+```javascript
+export default() {
+    computed: {
+          ...mapState({
+              mentorRoles: state => state.mentorAssignment.mentorRoles
+          }),
+    }
+}
+```
+
+```html
+<td>
+    <select :value="record.mentor_role" @change="(value) => update('mentor_role', record.id, value)" class="text-md border border-gray-400 rounded p-1">
+    <option v-for="(mentorRole, mentorRoleIndex) in mentorRoles"  :key="mentorRoleIndex" :value="mentorRole.id">
+        {{ mentorRole.titles }}
+    </option>
+    </select>
+</td>
+```
+
 
 
 # Frontend folder structure
@@ -133,5 +166,6 @@ store/
 │   └── mentorAssignment.js
 ├── student/
 └── └── mentorAssignment.js
+└── mentorAssignment.js
 ```
 
