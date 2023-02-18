@@ -66,7 +66,8 @@ public function index(Request $request, TagProcessor $tagProcessor)
 
 ## MentorRoleController
 This controller was associated of displaying `mentor_role` to this particular section  
-[img]: https://github.com/Jicoy/amis-docs/blob/main/assets/mentor-assignment/Screenshot%202023-02-18%20223518.png
+
+![alt text](https://github.com/Jicoy/amis-docs/blob/main/assets/mentor-assignment/Screenshot%202023-02-18%20223518.png)
 
 # Frontend folder structure
 
