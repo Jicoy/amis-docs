@@ -1,19 +1,21 @@
 # Backend folder structure
 
 ```shell
-
 app/
 ├── Http/
 │   ├── Controllers/
 │   │   ├── Admin/
 │   │   │   ├── AdminMaController.php
 │   │   │   ├── AdminMaTxnController.php
-│   │   │   ├── MentorAssignmentController.php
+│   │   │   └── MentorAssignmentController.php
 │   │   ├── Faculty/
 │   │   │   ├── AdminMaController.php
 │   │   │   ├── AdminMaTxnController.php
-│   │   │   ├── MentorAssignmentController.php
+│   │   │   └── MentorAssignmentController.php
 │   │   ├── Student/
+│   │   │   ├── StudentMaController.php
+│   │   │   └── StudentMaTxnController.php
+│   │   ├── FacultiesController.php
 │   │   ├── MentorAssignmentController.php
 │   │   ├── MentorController.php
 │   │   └── MentorRoleController.php
@@ -21,7 +23,6 @@ app/
 │       └── MentorAssignment/
 │           └── SubmitRequest.php
 └── Services/
-
 ...
 
 database/
@@ -36,7 +37,34 @@ database/
 
 routes/
 └── api.php
+```
 
+# Frontend folder structure
 
+```shell
+components/
+├── mentor-assignments/
+│   ├── MentorAssignmentTable.vue
+│   ├── StudentActiveMentor.vue
+│   └── StudentAddMentor.vue
+├── GenericDrawer.vue  
+├── GenericTable.vue  
+└── StudentInfo.vue  
+pages/
+├── admin/
+│   ├── mentor-assginment-college.vue
+│   └── mentor-assginment-unit.vue
+├── faculty/
+│   ├── mentor-assignments.vue
+│   └── my-advisees.vue
+├── student/
+└── └── mentor-assignments.vue
+store/
+├── admin/
+│   └── mentorAssignment.js
+├── faculty/
+│   └── mentorAssignment.js
+├── student/
+└── └── mentorAssignment.js
 ```
 
