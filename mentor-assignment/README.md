@@ -5,7 +5,7 @@ app/
 ├── Http/
 │   ├── Controllers/
 │   │   ├── Admin/
-│   │   │   ├── [AdminMaController.php](#adminmacontroller)
+│   │   │   ├── AdminMaController.php
 │   │   │   ├── AdminMaTxnController.php
 │   │   │   └── MentorAssignmentController.php
 │   │   ├── Faculty/
@@ -40,7 +40,31 @@ routes/
 ```
 
 <a name="adminmacontroller"></a>
-## This admin ma controller
+## AdminMaController
+
+'Ma' stands for MentorAssignment inside this controller:
+
+
+
+```php
+
+public function index(Request $request, TagProcessor $tagProcessor)
+{
+    $request->merge(['access_permission' => 'tags']);
+    $ma = Ma::filter($request, $tagProcessor);
+    
+    if($request->has('items')) {
+        $ma = $ma->paginate($request->items);
+    } else {
+        $ma = $ma->get();
+    }
+    
+    return response()->json([
+        'ma' => $ma
+    ],200);
+}
+
+```
 
 
 
