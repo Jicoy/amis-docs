@@ -137,7 +137,33 @@ export const actions = {
     }
 }
 ```
-When we 
+Return `ACTIVE` faculty as shown below
+```javascript
+export const mutations = {
+    GET_APPOINTMENT_SUCCESS(state, data) {
+        if(data) {
+            var facultyListData =  data.map((item) => {
+                if(item.uuid != null) {
+                    // let homeunit = item.appointment != null ? '('+item.appointment.homeunit+')' : ''
+                    let homeunit = item.appointment != null ? item.appointment.homeunit : ''
+                    let faculty_status = item.appointment != null ? item.appointment.status : ''
+                    var temp = Object.assign({
+                        home_unit: homeunit,
+                        faculty_id: item.faculty_id,
+                        faculty_status: faculty_status,
+                        faculty_name: item.uuid.last_name+' '+item.uuid.first_name+' '+ homeunit
+                    }) 
+
+                    if(temp.faculty_status === 'ACTIVE') {
+                        return temp
+                    }
+                }
+            })
+            state.facultyList = facultyListData
+        }
+    }
+}
+``` 
 
 
 
