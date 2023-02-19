@@ -73,21 +73,21 @@ This conntroller was designated for displaying `mentor_name` on this particular 
 
 The mentor/faculty should exists on both tables `faculties` and `faculty_appointments`
 
-`faculties table`
+| faculties table |
 
 | faculty_id    |                 uuid                 | sais_id  |
 | ------------- |:------------------------------------:| -------: |
 | 5             | e4d3a590-9fe5-11ed-ae55-df4917c48579 | 19819812 |
 | 6             | e4d295a0-9fe5-11ed-9e4e-436f538054c9 | 89089089 |
 
-`faculty_appointments table`
+| faculty_appointments table |
 
 | id    |  faculty_id  |  homeunit  |  status   |
 | ----- |:------------:| ----------:|----------:|
 | 1     |      5       |    DX      |  ACTIVE   |
 | 2     |      6       |    DX      |  ACTIVE   |
 
-`users table`
+| users table |
 
 |       uuid                           |   sais_id   |   last_name   |   first_name   |   middle_name   |          email          |
 | ------------------------------------ |:-----------:| -------------:|---------------:|-----------------|-------------------------|
