@@ -70,22 +70,29 @@ This conntroller was designated for displaying `mentor_name` on this particular 
 ![alt text](https://github.com/Jicoy/amis-docs/blob/main/assets/mentor-assignment/Screenshot-2023-02-19-100353.png)
 > **Note**  
 > Two `models/tables` in mind to remember, so that mentor/faculty will display; `Faculty/faculties` and `FacultyAppointment/faculty_appointments`.
+
 The mentor/faculty should exists on both tables `faculties` and `faculty_appointments`
-```shell
-faculties
-```
+
+`faculties table`
+
 | faculty_id    |                 uuid                 | sais_id  |
 | ------------- |:------------------------------------:| -------: |
-| 3             | e4d22480-9fe5-11ed-a40b-15e2f964d78d | 98909890 |
+| 5             | e4d3a590-9fe5-11ed-ae55-df4917c48579 | 19819812 |
 | 6             | e4d295a0-9fe5-11ed-9e4e-436f538054c9 | 89089089 |
 
-```shell
-faculty_appointments
-```
+`faculty_appointments table`
+
 | id    |  faculty_id  |  homeunit  |  status   |
 | ----- |:------------:| ----------:|----------:|
-| 1     |      3       |    DX      |  ACTIVE   |
+| 1     |      5       |    DX      |  ACTIVE   |
 | 2     |      6       |    DX      |  ACTIVE   |
+
+`users table`
+
+|       uuid                           |   sais_id   |   last_name   |   first_name   |   middle_name   |          email          |
+| ------------------------------------ |:-----------:| -------------:|---------------:|-----------------|-------------------------|
+| e4d3a590-9fe5-11ed-ae55-df4917c48579 |  19819812   |    TANEDO     |    JERVIS      |                 | jtanedo@up.edu.ph       |  
+| e4d295a0-9fe5-11ed-9e4e-436f538054c9 |  89089089   | PAMULAKLAKIN  |      JEN       |                 | jpamulaklakin@up.edu.ph |
 
 
 
