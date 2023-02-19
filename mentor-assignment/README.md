@@ -73,23 +73,73 @@ This conntroller was designated for displaying `mentor_name` on this particular 
 
 The mentor/faculty should exists on both tables `faculties` and `faculty_appointments`
 
-`faculties table`
+#### `faculties` table
 | faculty_id    |                 uuid                 | sais_id  |
 | ------------- |:------------------------------------:| -------: |
 | 5             | e4d3a590-9fe5-11ed-ae55-df4917c48579 | 19819812 |
 | 6             | e4d295a0-9fe5-11ed-9e4e-436f538054c9 | 89089089 |
 
-`faculty_appointments table`
+#### `faculty_appointments` table
 | id    |  faculty_id  |  homeunit  |  status   |
 | ----- |:------------:| ----------:|----------:|
 | 1     |      5       |    DX      |  ACTIVE   |
 | 2     |      6       |    DX      |  ACTIVE   |
 
-`users table`
+#### `users` table
 |       uuid                           |   sais_id   |   last_name   |   first_name   |   middle_name   |          email          |
 | ------------------------------------ |:-----------:| -------------:|---------------:|-----------------|-------------------------|
 | e4d3a590-9fe5-11ed-ae55-df4917c48579 |  19819812   |    TANEDO     |    JERVIS      |                 | jtanedo@up.edu.ph       |  
 | e4d295a0-9fe5-11ed-9e4e-436f538054c9 |  89089089   | PAMULAKLAKIN  |      JEN       |                 | jpamulaklakin@up.edu.ph |
+
+This is how it fetch data from `backend` 
+```php
+public function index(Request $request)
+{
+    $ma = Faculty::filter($request)->get();
+    return response()->json(
+        [
+            'ma' => $ma,
+        ], 200
+    );
+}
+```
+#### Faculty Model
+```php
+public function appointment() 
+{
+    return $this->belongsTo(FacultyAppointment::class, 'faculty_id', 'faculty_id');
+}
+
+public function uuid() 
+{
+    return $this->belongsTo(User::class, 'uuid', 'uuid');
+}
+
+public function scopeFilter($query, $filters) {
+    if($filters->has('faculty_list')) {
+        $query->with(['uuid', 'appointment']);
+    }
+    ...
+}
+```
+
+```javascript
+export const actions = {
+    async getFaculty({commit }, payload) {
+        commit('GET_DATA_REQUEST')
+        try {
+            const data = await this.$axios.$get(`/faculties`, {params: {faculty_list: true}})
+            // console.log(data)
+            await commit('GET_APPOINTMENT_SUCCESS', data.ma)
+        } catch (error) {
+            ...
+        }
+    }
+}
+```
+When we 
+
+
 
 
 
