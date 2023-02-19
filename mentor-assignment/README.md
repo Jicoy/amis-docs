@@ -69,7 +69,7 @@ public function index(Request $request, TagProcessor $tagProcessor)
 This conntroller was designated for displaying `mentor_name` on this particular section. 
 ![alt text](https://github.com/Jicoy/amis-docs/blob/main/assets/mentor-assignment/Screenshot-2023-02-19-100353.png)
 > **Note**  
-> Two `models/tables` in mind to remember, so that mentor/faculty will display; `Faculty/faculties` and `FacultyAppointment/faculty_appointments`.
+> Two `models` in mind to remember, so that mentor/faculty will display; `Faculty` and `FacultyAppointment`.
 
 The mentor/faculty should exists on both tables `faculties` and `faculty_appointments`
 
