@@ -66,11 +66,17 @@ public function index(Request $request, TagProcessor $tagProcessor)
 
 
 ## FacultiesController
+This conntroller was designated for displaying `mentor_name` on this particular section. 
+![alt text](https://github.com/Jicoy/amis-docs/blob/main/assets/mentor-assignment/Screenshot-2023-02-19-100353.png)
+
+> **Note**  
+> Two `models` in mind to remember, so that mentor/faculty will display; `Faculty` and `FacultyAppointment` models
+
 
 
 ## MentorRoleController
-This controller was designated for displaying `mentor_role` in this particular section  
-![alt text](https://github.com/Jicoy/amis-docs/blob/main/assets/mentor-assignment/Screenshot%202023-02-18%20223518.png)
+This controller was designated for displaying `mentor_role` on this particular section  
+![alt text](https://github.com/Jicoy/amis-docs/blob/main/assets/mentor-assignment/Screenshot-2023-02-18-223518.png)
 
 `backend code`
 ```php
