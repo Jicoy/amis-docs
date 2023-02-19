@@ -68,9 +68,25 @@ public function index(Request $request, TagProcessor $tagProcessor)
 ## FacultiesController
 This conntroller was designated for displaying `mentor_name` on this particular section. 
 ![alt text](https://github.com/Jicoy/amis-docs/blob/main/assets/mentor-assignment/Screenshot-2023-02-19-100353.png)
-
 > **Note**  
-> Two `models` in mind to remember, so that mentor/faculty will display; `Faculty` and `FacultyAppointment` models
+> Two `models/tables` in mind to remember, so that mentor/faculty will display; `Faculty/faculties` and `FacultyAppointment/faculty_appointments`.
+The mentor/faculty should exists on both tables `faculties` and `faculty_appointments`
+```shell
+faculties
+```
+| faculty_id    |                 uuid                 | sais_id  |
+| ------------- |:------------------------------------:| -------: |
+| 3             | e4d22480-9fe5-11ed-a40b-15e2f964d78d | 98909890 |
+| 6             | e4d295a0-9fe5-11ed-9e4e-436f538054c9 | 89089089 |
+
+```shell
+faculty_appointments
+```
+| id    |  faculty_id  |  homeunit  |  status   |
+| ----- |:------------:| ----------:|----------:|
+| 1     |      3       |    DX      |  ACTIVE   |
+| 2     |      6       |    DX      |  ACTIVE   |
+
 
 
 
@@ -91,6 +107,8 @@ public function index()
 }
 ```
 This is how it fetch data from `backend`
+> **Note**  
+> This `async getMentorRole` was already used by all roles and it is located at `store/mentorAssignment.js`
 
 ```javascript
 export const actions = {
@@ -105,8 +123,6 @@ export const actions = {
     }
 }
 ```
-> **Note**  
-> This `async getMentorRole` was already used by all roles and it is located at `store/mentorAssignment.js`
 
 ```javascript
 export const mutations = {
